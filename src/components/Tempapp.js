@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./css/style.css";
 const Tempapp = () => {
   const [city, setCity] = useState(null);
-  // const [set, setWind] = useState(null);
   const [search, setSearch] = useState();
 
   useEffect(() => {
@@ -11,8 +10,6 @@ const Tempapp = () => {
       const response = await fetch(url);
       const resJson = await response.json();
       setCity(resJson.main);
-      // setWind(resJson.wind);
-      // console.log(resJson);
     };
 
     fetchApi();
@@ -36,22 +33,15 @@ const Tempapp = () => {
         ) : (
           <div>
             <div className="info">
-              <h2 className="location">
-                <i className="fas fa-street-view"></i> {search}
-              </h2>
-
+              
               <h1 className="temp">{city.temp}°C</h1>
               <h3 className="feels_like">feels_like : {city.feels_like}°C</h3>
 
               <h3 className="tempmin_max">Min : {city.temp_min}°C | Max : {city.temp_max}°C</h3>
               <h3 className="pressure">Pressure : {city.pressure}mBar </h3>
               <h3 className="humidity">Humidity : {city.humidity}% </h3>
-              {/* <h3 className="humidity">Humidity : {set.speed} </h3> */}
             </div>
 
-            <div className="wave -one"></div>
-            <div className="wave -two"></div>
-            <div className="wave -three"></div>
           </div>
         )}
       </div>
